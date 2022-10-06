@@ -1,3 +1,10 @@
+/*
+* This is just a temporary class
+* there is no actual implementation of this class
+* No need to read this class!!!
+* */
+
+
 package ATMPackage;
 import java.util.Scanner;
 
