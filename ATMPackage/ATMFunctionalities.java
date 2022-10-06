@@ -26,12 +26,12 @@ public class ATMFunctionalities implements ATMInterface{
 
                 Map.Entry pair = (Map.Entry) it.next();
                 Account acc = (Account) pair.getValue();
-                System.out.println(data.get(123456));
-                System.out.println("key-set  " + data.keySet());    //zst to check
-                System.out.println("acc    " + acc);    //zst to check
-                System.out.println("pair    " + pair);  //zst to check
-                System.out.println("pinNumber:    " + acc.getPinNumber());  //zst to check
-                System.out.println("Balance:    " + acc.getBalance());  //zst to check
+//                System.out.println(data.entrySet());
+//                System.out.println("key-set  " + data.keySet());    //zst to check
+//                System.out.println("acc    " + acc);    //zst to check
+//                System.out.println("pair    " + pair);  //zst to check
+//                System.out.println("pinNumber:    " + acc.getPinNumber());  //zst to check
+//                System.out.println("Balance:    " + acc.getBalance());  //zst to check
                 System.out.print("\nChoice: ");     //Choose option 1 , as option 2 is not yet done
                 int choice = sc.nextInt();
                 switch (choice) {
@@ -57,14 +57,14 @@ public class ATMFunctionalities implements ATMInterface{
     public void getLogin() throws IOException {
         Scanner sc = new Scanner(System.in);
         boolean end = false;
-        int customerNumber = 0;
-        int pinNumber = 0;
+        int Number = 0;
+        int pin = 0;
         while (!end) {
             try {
                 System.out.print("\nEnter your customer number: ");
-                customerNumber = sc.nextInt();
+                Number = sc.nextInt();
                 System.out.print("\nEnter your PIN number: ");
-                pinNumber = sc.nextInt();
+                pin = sc.nextInt();
                 Iterator it = data.entrySet().iterator();
 
 //                This while loop in never getting executed !!!!
@@ -72,7 +72,7 @@ public class ATMFunctionalities implements ATMInterface{
                 while (it.hasNext()) {
                     Map.Entry pair = (Map.Entry) it.next();
                     Account acc = (Account) pair.getValue();
-                    if (data.containsKey(customerNumber) && pinNumber == acc.getPinNumber()) {
+                    if (data.containsKey(Number) && pin == acc.getPinNumber()) {
                         getChecking(acc);
                         end = true;
                         break;

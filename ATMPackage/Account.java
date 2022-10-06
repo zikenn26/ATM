@@ -17,12 +17,12 @@ public class Account {
         this.pinNumber = pinNumber;
         this.checkingBalance = checkingBalance;
     }
-//    public Account(int customerNumber, int pinNumber, double checkingBalance, String customerName) {
-//        this.customerNumber = customerNumber;
-//        this.pinNumber = pinNumber;
-//        this.checkingBalance = checkingBalance;
-//        this.customerName = customerName;
-//    }
+    public Account(int customerNumber, int pinNumber, double checkingBalance, String customerName) {
+        this.customerNumber = customerNumber;
+        this.pinNumber = pinNumber;
+        this.checkingBalance = checkingBalance;
+        this.customerName = customerName;
+    }
     public int getPinNumber() {
         return pinNumber;
     }
