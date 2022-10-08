@@ -6,7 +6,6 @@ import java.util.*;
 
 public class ATMFunctionalities implements ATMInterface{
     Scanner sc = new Scanner(System.in);
-//    HashMap<Integer, Account> data = new HashMap<>();
     HashMap<Integer, Account> data = new HashMap<Integer, Account>();
 
     public void mainMenu() throws IOException {
@@ -14,24 +13,28 @@ public class ATMFunctionalities implements ATMInterface{
         HashMap<Integer, Account> data = new HashMap<>();
         data.put(952141, new Account(952141, 9521, 1000, "Gulshan"));
         data.put(154561, new Account(154561, 1545, 2000, "Ashish"));
-        data.put(123456, new Account(123456, 1234, 20000));
+//        data.put(123456, new Account(123456, 1234, 20000));
 
         boolean end = false;
         while (!end) {
             try {
                 System.out.println("\n1 - Login");
                 System.out.println("2 - Create Account");
-//                For iteration
-                Iterator it = data.entrySet().iterator();
 
+
+
+//                For checking values :
+                Iterator it = data.entrySet().iterator();
                 Map.Entry pair = (Map.Entry) it.next();
                 Account acc = (Account) pair.getValue();
-//                System.out.println(data.entrySet());
-//                System.out.println("key-set  " + data.keySet());    //zst to check
-//                System.out.println("acc    " + acc);    //zst to check
-//                System.out.println("pair    " + pair);  //zst to check
-//                System.out.println("pinNumber:    " + acc.getPinNumber());  //zst to check
-//                System.out.println("Balance:    " + acc.getBalance());  //zst to check
+                System.out.println("data.entrySet()     " + data.entrySet());
+                System.out.println("key-set  " + data.keySet());    //zst to check
+                System.out.println("acc    " + acc);    //zst to check
+                System.out.println("pair    " + pair);  //zst to check
+                System.out.println("acc.getPinNumber()  " + acc.getPinNumber());
+
+
+
                 System.out.print("\nChoice: ");     //Choose option 1 , as option 2 is not yet done
                 int choice = sc.nextInt();
                 switch (choice) {
@@ -70,9 +73,11 @@ public class ATMFunctionalities implements ATMInterface{
 //                This while loop in never getting executed !!!!
 //                Please HELP !!!!!
                 while (it.hasNext()) {
+                    System.out.println("Inside while loop");
                     Map.Entry pair = (Map.Entry) it.next();
                     Account acc = (Account) pair.getValue();
-                    if (data.containsKey(Number) && pin == acc.getPinNumber()) {
+                    if (data.containsKey(Number) && (pin==acc.getPinNumber())) {
+                        System.out.println("Inside if");
                         getChecking(acc);
                         end = true;
                         break;
@@ -103,17 +108,17 @@ public class ATMFunctionalities implements ATMInterface{
 
                 switch (selection) {
                     case 1:
-//                        System.out.println("\nCheckings Account Balance: " + moneyFormat.format(acc.getCheckingBalance()));
+//                        View Balance
                         break;
                     case 2:
-//                        acc.getCheckingWithdrawInput();
+//                        Withdraw Funds
                         break;
                     case 3:
-//                        acc.getCheckingDepositInput();
+//                        Deposit Funds
                         break;
 
                     case 4:
-//                        acc.getTransferInput("Checkings");
+//                        Transfer Funds
                         break;
                     case 5:
                         end = true;
