@@ -1,13 +1,12 @@
 package ATMPackage;
-import java.util.Scanner;
 
 public class Account {
-    private int customerNumber;
+//    final keyword is a non-access modifier used for variables, methods and classes, which make them non-changeable.
+//    final makes them impossible to inherit and override.
+    private final int customerNumber;
     private int pinNumber;
     private double checkingBalance = 0;
-
     private String customerName;
-    Scanner input = new Scanner(System.in);
 
 
 //    Constructor to enter some pre-defined account details
@@ -22,17 +21,32 @@ public class Account {
         this.checkingBalance = checkingBalance;
         this.customerName = customerName;
     }
+    public Account(int customerNumber, String customerName, int pinNumber) {
+        this.customerNumber = customerNumber;
+        this.customerName = customerName;
+        this.pinNumber = pinNumber;
+    }
+
     public int getPinNumber() {
         return pinNumber;
     }
     public double getBalance() {
         return checkingBalance;
     }
-
     public int getCustomerNumber() {
         return customerNumber;
     }
     public String getCustomerName(){
         return customerName;
     }
+    public double updateBalance(double amount ,int choice){
+        if(choice == 1){
+            checkingBalance = checkingBalance + amount;
+        }
+        else if (choice == 2){
+            checkingBalance = checkingBalance - amount;
+        }
+        return checkingBalance;
+    }
+
 }

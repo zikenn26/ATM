@@ -6,7 +6,6 @@ public class ATM {
         introduction();
         ATMFunctionalities menu = new ATMFunctionalities();
         menu.mainMenu();
-
     }
 
     public static void introduction(){
