@@ -23,7 +23,7 @@ public class ATMFunctionalities implements ATMInterface{
                 System.out.println("\n0 - Exit");
                 System.out.println("1 - Login");
                 System.out.println("2 - Create Account");
-                System.out.print("\nChoice: ");     //Choose option 1 , as option 2 is not yet done
+                System.out.print("\nChoice: ");
                 int choice = sc.nextInt();
                 switch (choice) {
                     case 0 -> exit(0);
@@ -116,25 +116,27 @@ public class ATMFunctionalities implements ATMInterface{
         while (!end) {
             try {
                 System.out.println("\nChecking Account: ");
+                System.out.println(" Type 0 - Exit");
                 System.out.println(" Type 1 - View Balance");
                 System.out.println(" Type 2 - Withdraw Funds");
                 System.out.println(" Type 3 - Deposit Funds");
                 System.out.println(" Type 4 - Transfer Funds");
-                System.out.println(" Type 5 - Exit");
+                System.out.println(" Type 5 - PIN Change");
                 System.out.print("\nChoice: ");
 
                 int selection = sc.nextInt();
 
                 switch (selection) {
+                    case 0 -> end = true;
                     case 1 -> viewBalance(acc);
                     case 2 -> withdrawal(acc);
                     case 3 -> deposit(acc);
                     case 4 -> System.out.println("Transfer section not yet developed");
 //                        Transfer Funds
-                    case 5 -> end = true;
+                    case 5 -> pinChange(acc);
                     default -> System.out.println("\nInvalid Choice.");
                 }
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException | IOException e) {
                 System.out.println("\nInvalid Choice.");
                 sc.next();
             }
@@ -187,8 +189,36 @@ public class ATMFunctionalities implements ATMInterface{
         }
     }
 
-    @Override
-    public void pinChange() {}
+    public void pinChange(Account acc) throws IOException{
+        boolean end = false;
+        int accountNumber;
+        int pin;
+        while (!end) {
+            try {
+                System.out.print("Enter the CURRENT PIN number: ");
+                pin = sc.nextInt();
+                System.out.println("Enter the NEW PIN number: ");
+                int newPin = sc.nextInt();
+                for (Map.Entry<Integer, Account> accountEntry : data.entrySet()) {
+                    Account accountEntryValue = accountEntry.getValue();
+                    if (data.containsKey(acc.getCustomerNumber()) && (pin == accountEntryValue.getPinNumber())) {
+                        acc.updatePin(newPin);
+                        end = true;
+                        break;
+                    }
+                }
+                if (!end) {
+                    System.out.println("\nWrong Customer AccountNumber or Pin");
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("\nInvalid Character(s). Only Numbers.");
+            }
+            System.out.println("Your PIN has been updated. Please login with the new PIN.");
+            System.out.println("\nRedirecting to login.............");
+            getLogin();
+        }
+    }
     @Override
     public void viewBalance(Account acc) {
         System.out.println("Dear " + acc.getCustomerName() + ", your account balance is Rs. "+acc.getBalance());

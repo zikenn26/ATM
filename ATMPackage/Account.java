@@ -48,5 +48,8 @@ public class Account {
         }
         return checkingBalance;
     }
+    public void updatePin(int newPin){
+        this.pinNumber = newPin;
+    }
 
 }
