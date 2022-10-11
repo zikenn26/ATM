@@ -1,4 +1,4 @@
-package ATMPackage;
+package atmPackage;
 import java.io.IOException;
 
 public class ATM {

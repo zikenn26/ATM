@@ -1,4 +1,4 @@
-package ATMPackage;
+package atmPackage;
 
 public class Account {
 //    final keyword is a non-access modifier used for variables, methods and classes, which make them non-changeable.
@@ -10,11 +10,6 @@ public class Account {
 
 
 //    Constructor to enter some pre-defined account details
-    public Account(int customerNumber, int pinNumber, double checkingBalance) {
-        this.customerNumber = customerNumber;
-        this.pinNumber = pinNumber;
-        this.checkingBalance = checkingBalance;
-    }
     public Account(int customerNumber, int pinNumber, double checkingBalance, String customerName) {
         this.customerNumber = customerNumber;
         this.pinNumber = pinNumber;
