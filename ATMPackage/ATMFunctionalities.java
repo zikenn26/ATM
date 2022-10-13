@@ -35,14 +35,14 @@ public class ATMFunctionalities implements ATMInterface{
                 System.out.print("\nChoice: ");     //Choose option 1 , as option 2 is not yet done
                 int choice = sc.nextInt();
                 switch (choice) {
-                    case 1 -> {
+                    case 1:
                         getLogin();
                         end = true;
-                    }
-                    case 2 ->
+                    case 2:
 //                        createNewAccount();
                             end = true;
-                    default -> System.out.println("\nInvalid Choice.");
+                    default:
+                        System.out.println("\nInvalid Choice.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("\nInvalid Choice.");
@@ -65,6 +65,7 @@ public class ATMFunctionalities implements ATMInterface{
                 Number = sc.nextInt();
                 System.out.print("\nEnter your PIN number: ");
                 pin = sc.nextInt();
+                Account acc2=data.get(Number);
                 Iterator it = data.entrySet().iterator();
 
 //                This while loop in never getting executed !!!!
